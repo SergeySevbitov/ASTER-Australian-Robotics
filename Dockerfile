@@ -5,8 +5,13 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /app/dist/aster-landing/browser /usr/share/nginx/html
+FROM dockerhub-proxy.itcapital.io/nginx:1.23.3 AS nginx
+
+COPY .ci/default.conf /etc/nginx/conf.d/
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=angular_app /app/dist/apps/aster-landing/*  /usr/share/nginx/html/
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
