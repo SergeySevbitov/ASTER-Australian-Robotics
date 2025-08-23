@@ -118,6 +118,16 @@
   color: var(--color-accent);
   font-size: var(--font-size-subtitle);
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  svg {
+    width: var(--font-size-subtitle);
+    height: var(--font-size-subtitle);
+    vertical-align: middle;
+    fill: var(--color-accent);
+  }
 }
 
 .sections__item p, .sections__item li {
@@ -189,7 +199,7 @@ app-bg-map {
   }
 
   &.pos-1 {
-    top: 50%;
+    top: 70%;
     left: 80%;
     width: 50vw;
     height: 50vh;
@@ -221,6 +231,51 @@ app-bg-map {
   max-width: 400px;
 }
 
+.app__brand__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 64px;
+
+  &__item {
+    font-size: 20px;
+    color: var(--color-text-muted);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--color-text-muted);
+    }
+
+    &.is-visible {
+      color: var(--color-accent);
+      font-weight: 600;
+
+      svg {
+        fill: var(--color-accent);
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1400px) {
+  .sections__html {
+    font-size: 18px;
+    text-align: left;
+    min-width: 400px;
+    width: 80%;
+    max-width: 960px;
+  }
+}
 
 
 @media (max-width: 860px) {
@@ -273,5 +328,9 @@ app-bg-map {
 
   .mobile-cta {
     display: block;
+  }
+
+  .app__brand__list {
+    display: none;
   }
 }

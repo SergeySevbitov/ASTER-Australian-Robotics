@@ -23,47 +23,6 @@ export class App implements OnInit {
   protected visibleMap: Record<number, boolean> = {};
   protected selectedSectionId = signal<number>(0);
   protected isSliding = signal(true);
-  protected readonly sections = signal<Array<Section>>([
-    {
-      id: 0,
-      title: 'Next-Generation Robotics<br>for Australia’s Future',
-      subtitle: 'Vision & Backing',
-      html: `
-        <p>We are an Australian company developing advanced robotics solutions to empower local Australian industries and communities with world-class innovation.</p>
-        <p>We are backed by leading international venture capital and a team of seasoned professionals with global expertise.</p>
-      `,
-    },
-    {
-      id: 1,
-      title: 'Accessible, Affordable, Transformative',
-      subtitle: 'Mission & Focus',
-      html: `
-        <p>
-          Our mission is to make robotics accessible and impactful, focusing on the areas that matter most to Australian businesses and people:
-        </p>
-        <p>
-          <ul>
-            <li><strong>Mining & Resources:</strong> safer operations, automated processes, more efficient exploration.</li>
-            <li><strong>Disaster Prevention & Emergency Response:</strong> strengthening resilience, protecting communities, and supporting first responders.</li>
-            <li><strong>Education:</strong> fostering early interest in robotics, inspiring young learners through competition, and preparing young Australians with future-ready skills.</li>
-            <li><strong>Entertainment, Hospitality</strong>, and <strong>Retail:</strong> Empowering learning and innovation with educational robotics kits and research platforms.</li>
-          </ul>
-        </p>
-      `,
-    },
-    {
-      id: 2,
-      title: 'Shaping Australia’s Tomorrow',
-      subtitle: 'Future & Commitment',
-      html: '<p>With a strong foundation, hands-on technical expertise, and a bold vision, we are redefining how robotics becomes part of everyday life in Australia.</p>',
-    },
-    {
-      id: 3,
-      title: 'Work in Progress, Built for Australia',
-      subtitle: 'Stay Tuned',
-      html: '<p>Our new projects, updates, and releases are on the way, stay tuned as we bring our exciting plans to life in Australia.</p>',
-    },
-  ]);
 
   protected readonly currentIndex = signal(0);
 
@@ -72,7 +31,7 @@ export class App implements OnInit {
   }
 
   protected goTo(index: number): void {
-    const clamped = Math.max(0, Math.min(index, this.sections().length - 1));
+    const clamped = Math.max(0, Math.min(index, 3));
     const el = document.getElementById('slide-' + clamped);
     if (el) {
       el.scrollIntoView({behavior: 'smooth', block: 'start'});

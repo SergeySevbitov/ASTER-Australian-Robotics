@@ -6,6 +6,24 @@
     <div>
       <div class="app__brand-title"><span>ASTER</span>Australian Robotics</div>
       <div class="app__brand-subtitle">Innovating for Australia's future</div>
+      <div class="app__brand__list">
+        <div class="app__brand__list__item" [class.is-visible]="visibleMap[0]" (click)="goTo(0)">
+          <ng-template [ngTemplateOutlet]="icon0"></ng-template>
+          Vision & Backing
+        </div>
+        <div class="app__brand__list__item" [class.is-visible]="visibleMap[1]" (click)="goTo(1)">
+          <ng-template [ngTemplateOutlet]="icon1"></ng-template>
+          Mission & Focus
+        </div>
+        <div class="app__brand__list__item" [class.is-visible]="visibleMap[2]" (click)="goTo(2)">
+          <ng-template [ngTemplateOutlet]="icon2"></ng-template>
+          Future & Commitment
+        </div>
+        <div class="app__brand__list__item" [class.is-visible]="visibleMap[3]" (click)="goTo(3)">
+          <ng-template [ngTemplateOutlet]="icon3"></ng-template>
+          Stay Tuned
+        </div>
+      </div>
     </div>
     <div class="app__brand__contacts">
       <app-button href="mailto:interested@asterrobotics.com.au">Contact us</app-button>
@@ -18,29 +36,87 @@
   <section class="app__content">
     <app-bg-map [ngClass]="['pos-' + selectedSectionId()]"/>
     <div class="sections__list" [class.sections__list--sliding]="isSliding()" #slides>
-      @for (section of sections(); track section.id) {
-        <article class="sections__item" [class.is-visible]="visibleMap[section.id]" [attr.id]="'slide-' + section.id">
-          <div class="sections__header">
-            <h2 class="sections__subtitle" [innerHTML]="section.subtitle"></h2>
-            <h1 class="sections__title" [innerHTML]="section.title"></h1>
-          </div>
-          <div class="sections__html" [innerHTML]="section.html"></div>
-        </article>
-      }
+      <article class="sections__item" id="slide-0" [class.is-visible]="visibleMap[0]">
+        <div class="sections__header">
+          <h2 class="sections__subtitle">
+            <ng-template [ngTemplateOutlet]="icon0"></ng-template>
+            Vision & Backing
+          </h2>
+          <h1 class="sections__title">Next-Generation Robotics<br>for Australia’s Future</h1>
+        </div>
+        <div class="sections__html">
+          <p>We are an Australian company developing advanced robotics solutions to empower local Australian industries
+            and communities with world-class innovation.</p>
+          <p>We are backed by leading international venture capital and a team of seasoned professionals with global
+            expertise.</p>
+        </div>
+      </article>
 
-<!--      <div class="app__footer sections__item">-->
-<!--        <p>-->
-<!--          &copy; 2025 Aster Robotics - All rights reserved.-->
-<!--        </p>-->
-<!--      </div>-->
+      <article class="sections__item" id="slide-1" [class.is-visible]="visibleMap[1]">
+        <div class="sections__header">
+          <h2 class="sections__subtitle">
+            <ng-template [ngTemplateOutlet]="icon1"></ng-template>
+            Mission & Focus
+          </h2>
+          <h1 class="sections__title">Accessible, Affordable, Transformative</h1>
+        </div>
+        <div class="sections__html">
+          <p>
+            Our mission is to make robotics accessible and impactful, focusing on the areas that matter most to
+            Australian businesses and people:
+          </p>
+          <ul>
+            <li><strong>Mining & Resources:</strong> safer operations, automated processes, more efficient exploration.
+            </li>
+            <li><strong>Disaster Prevention & Emergency Response:</strong> strengthening resilience, protecting
+              communities, and supporting first responders.
+            </li>
+            <li><strong>Education:</strong> fostering early interest in robotics, inspiring young learners through
+              competition, and preparing young Australians with future-ready skills.
+            </li>
+            <li><strong>Entertainment, Hospitality</strong>, and <strong>Retail:</strong> Empowering learning and
+              innovation with educational robotics kits and research platforms.
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="sections__item" id="slide-2" [class.is-visible]="visibleMap[2]">
+        <div class="sections__header">
+          <h2 class="sections__subtitle">
+            <ng-template [ngTemplateOutlet]="icon2"></ng-template>
+            Future & Commitment
+          </h2>
+          <h1 class="sections__title">Shaping Australia’s Tomorrow</h1>
+        </div>
+        <div class="sections__html">
+          <p>With a strong foundation, hands-on technical expertise, and a bold vision, we are redefining how robotics
+            becomes part of everyday life in Australia.</p>
+        </div>
+      </article>
+
+      <article class="sections__item" id="slide-3" [class.is-visible]="visibleMap[3]">
+        <div class="sections__header">
+          <h2 class="sections__subtitle">
+            <ng-template [ngTemplateOutlet]="icon3"></ng-template>
+            Stay Tuned
+          </h2>
+          <h1 class="sections__title">Work in Progress, Built for Australia</h1>
+        </div>
+        <div class="sections__html">
+          <p>Our new projects, updates, and releases are on the way, stay tuned as we bring our exciting plans to life
+            in Australia.</p>
+        </div>
+      </article>
     </div>
     <nav class="sections__nav">
       <div class="sections__nav__arrow" aria-label="Previous" (click)="prev()">
         <img ngSrc="play.svg" alt="next" height="16" width="16" style="transform: rotate(-90deg);">
       </div>
-      @for (section of sections(); let i = $index; track section.id) {
-        <div class="sections__dot" [class.sections__dot--active]="currentIndex() === i" (click)="goTo(i)"></div>
-      }
+      <div class="sections__dot" [class.sections__dot--active]="currentIndex() === 0" (click)="goTo(0)"></div>
+      <div class="sections__dot" [class.sections__dot--active]="currentIndex() === 1" (click)="goTo(1)"></div>
+      <div class="sections__dot" [class.sections__dot--active]="currentIndex() === 2" (click)="goTo(2)"></div>
+      <div class="sections__dot" [class.sections__dot--active]="currentIndex() === 3" (click)="goTo(3)"></div>
       <div class="sections__nav__arrow" aria-label="Next" (click)="next()">
         <img ngSrc="play.svg" alt="next" height="16" width="16" style="transform: rotate(90deg);">
       </div>
@@ -48,3 +124,60 @@
     <app-button class="mobile-cta" href="mailto:interested@asterrobotics.com.au">Contact us</app-button>
   </section>
 </div>
+
+
+<ng-template #icon0>
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="m65.0142288 49.9924927c0 8.2921181-6.7220917 15.0142212-15.0142212 15.0142212s-15.014225-6.7221031-15.014225-15.0142212 6.7220955-15.014225 15.014225-15.014225 15.0142212 6.7220955 15.0142212 15.014225zm32.4707566.5004654c-.0452652.1738892-.1107712.3418617-.1951828.5004768-.0353775.1235237-.0805664.2440147-.1351318.3603401-.6806412 1.0660095-17.0461502 26.2799072-47.1546669 26.2799072s-46.4740287-25.2138977-47.154672-26.2799034c-.0545671-.1163254-.0997534-.2368202-.1351275-.3603401-.0844111-.1586151-.1499202-.3265877-.1951852-.500473-.020026-.3199921-.020026-.6409187 0-.960907.045265-.1738853.110774-.3418579.1951852-.5004768.0353742-.1235161.0805604-.2440109.1351275-.3603363.6806493-1.0910416 17.046154-26.3049259 47.1546745-26.3049259s46.4740231 25.2138843 47.1546796 26.2798976c.0545578.1163216.0997467.2368164.1351242.3603363.0844193.1586189.1499176.3265915.1951828.5004768.0200119.3199921.0200119.6409111 0 .9609032zm-5.5052186-.5004654c-3.7135162-5.0047417-18.4324646-22.6214352-41.974762-22.6214352s-38.2662448 17.6166935-41.979762 22.6214352c3.7135172 5.0047302 18.4324608 22.6214294 41.9747658 22.6214294s38.2612457-17.6166992 41.974762-22.6214294z"/>
+  </svg>
+</ng-template>
+
+<ng-template #icon1>
+  <svg height="512pt" viewBox="0 0 512 512.00069" width="512pt" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="m256.855469 178.625c7.046875 0 12.753906-5.710938 12.753906-12.753906 0-7.042969-5.707031-12.753906-12.753906-12.753906-56.347657 0-102.027344 45.679687-102.027344 102.03125 0 56.347656 45.679687 102.027343 102.027344 102.027343 56.351562 0 102.03125-45.679687 102.03125-102.027343 0-7.046876-5.710938-12.753907-12.753907-12.753907-7.042968 0-12.753906 5.707031-12.753906 12.753907 0 42.261718-34.257812 76.523437-76.523437 76.523437-42.261719 0-76.523438-34.261719-76.523438-76.523437 0-42.265626 34.261719-76.523438 76.523438-76.523438zm0 0"></path>
+    <path
+      d="m500.199219 179.394531c-2.214844-6.691406-9.433594-10.320312-16.128907-8.105469-6.539062 2.164063-10.179687 9.125-8.230468 15.730469 38.140625 121.457031-29.398438 250.835938-150.855469 288.976563-121.453125 38.140625-250.832031-29.398438-288.972656-150.855469-38.144531-121.457031 29.398437-250.835937 150.851562-288.976563 44.960938-14.117187 93.164063-14.117187 138.121094 0 6.75 2.035157 13.871094-1.785156 15.90625-8.535156 2.003906-6.648437-1.671875-13.675781-8.277344-15.824218-134.863281-42.3125-278.496093 32.714843-320.808593 167.582031-42.3125 134.863281 32.71875 278.496093 167.582031 320.808593 134.867187 42.3125 278.496093-32.714843 320.808593-167.582031 15.648438-49.875 15.648438-103.34375.003907-153.21875zm0 0"></path>
+    <path
+      d="m281.144531 91.117188c.066407-7.261719-5.511719-13.332032-12.753906-13.875-3.808594-.324219-7.621094-.648438-11.53125-.648438-98.613281 0-178.554687 79.941406-178.554687 178.554688 0 98.609374 79.941406 178.550781 178.554687 178.550781 98.609375 0 178.550781-79.941407 178.550781-178.550781 0-4.613282-.28125-9.222657-.847656-13.800782-1.019531-7-7.519531-11.847656-14.519531-10.828125-7 1.015625-11.847657 7.519531-10.832031 14.519531.039062.265626.085937.527344.140624.792969.277344 3.089844.550782 6.152344.550782 9.308594.003906 84.527344-68.515625 153.046875-153.039063 153.054687-84.527343.003907-153.046875-68.519531-153.050781-153.042968-.003906-84.523438 68.511719-153.046875 153.039062-153.050782h.003907c3.164062 0 6.230469.273438 9.3125.546876l2.390625.199218c6.664062.285156 12.296875-4.886718 12.578125-11.550781.003906-.0625.003906-.121094.007812-.179687zm0 0"></path>
+    <path
+      d="m333.378906 114.855469v45.734375l-85.539062 85.539062c-5.066406 4.894532-5.207032 12.96875-.3125 18.035156 4.894531 5.066407 12.96875 5.207032 18.035156.3125.105469-.101562.210938-.207031.3125-.3125l85.539062-85.539062h45.734376c3.382812 0 6.625-1.34375 9.019531-3.738281l76.519531-76.523438c4.980469-4.980469 4.980469-13.054687 0-18.035156-2.390625-2.390625-5.632812-3.734375-9.015625-3.734375h-38.261719v-38.261719c0-7.042969-5.710937-12.753906-12.757812-12.75-3.378906 0-6.621094 1.34375-9.011719 3.734375l-76.523437 76.523438c-2.394532 2.390625-3.738282 5.632812-3.738282 9.015625zm25.507813 5.28125 51.015625-51.015625v20.226562c0 7.042969 5.710937 12.753906 12.753906 12.753906h20.226562l-51.015624 51.015626h-32.980469zm0 0"></path>
+  </svg>
+</ng-template>
+
+<ng-template #icon2>
+  <svg id="fi_3812017" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512"
+       xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <path
+        d="m235 101c-96.495 0-175 78.505-175 175s78.505 175 175 175 175-78.505 175-175-78.505-175-175-175zm144.228 160h-14.228c-8.284 0-15 6.716-15 15s6.716 15 15 15h14.228c-1.607 15.562-5.687 30.399-11.836 44.116l-12.308-7.106c-7.174-4.142-16.348-1.684-20.49 5.49s-1.684 16.348 5.49 20.49l12.263 7.08c-8.997 12.376-19.9 23.279-32.276 32.276l-7.08-12.263c-4.142-7.174-13.316-9.633-20.49-5.49s-9.632 13.316-5.49 20.49l7.106 12.308c-13.717 6.149-28.554 10.23-44.116 11.836v-14.227c0-8.284-6.716-15-15-15s-15 6.716-15 15v14.228c-15.562-1.607-30.399-5.687-44.116-11.836l7.106-12.308c4.142-7.174 1.684-16.348-5.49-20.49s-16.348-1.684-20.49 5.49l-7.08 12.263c-12.376-8.997-23.279-19.9-32.276-32.276l12.263-7.08c7.174-4.142 9.632-13.316 5.49-20.49s-13.316-9.633-20.49-5.49l-12.308 7.106c-6.15-13.718-10.231-28.555-11.838-44.117h14.228c8.284 0 15-6.716 15-15s-6.716-15-15-15h-14.228c1.607-15.562 5.687-30.399 11.836-44.116l12.308 7.106c7.174 4.142 16.348 1.684 20.49-5.49s1.684-16.348-5.49-20.49l-12.263-7.08c8.997-12.376 19.9-23.279 32.276-32.276l7.08 12.263c4.142 7.174 13.316 9.632 20.49 5.49s9.632-13.316 5.49-20.49l-7.106-12.308c13.717-6.149 28.554-10.23 44.116-11.836v14.227c0 8.284 6.716 15 15 15s15-6.716 15-15v-14.228c15.562 1.607 30.399 5.687 44.116 11.836l-7.106 12.308c-4.142 7.174-1.684 16.348 5.49 20.49s16.348 1.684 20.49-5.49l7.08-12.263c12.376 8.997 23.279 19.9 32.276 32.276l-12.263 7.08c-7.174 4.142-9.633 13.316-5.49 20.49s13.316 9.632 20.49 5.49l12.308-7.106c6.15 13.718 10.231 28.556 11.838 44.117z"></path>
+      <path
+        d="m507.606 45.394-40-40c-5.857-5.858-15.355-5.858-21.213 0s-5.858 15.355 0 21.213l14.394 14.394-225.787-.001c-62.771 0-121.784 24.444-166.17 68.83s-68.83 103.4-68.83 166.17 24.444 121.784 68.83 166.17 103.399 68.83 166.17 68.83c8.284 0 15-6.716 15-15s-6.716-15-15-15c-113.037 0-205-91.962-205-205 0-54.757 21.323-106.237 60.043-144.957 38.72-38.719 90.199-60.042 144.957-60.042h225.786l-14.393 14.393c-5.858 5.858-5.858 15.355 0 21.213 2.929 2.929 6.768 4.393 10.607 4.393s7.678-1.464 10.606-4.394l40-40c5.859-5.857 5.859-15.354 0-21.212z"></path>
+      <path
+        d="m285 261h-35v-55c0-8.284-6.716-15-15-15s-15 6.716-15 15v70c0 8.284 6.716 15 15 15h50c8.284 0 15-6.716 15-15s-6.716-15-15-15z"></path>
+      <circle cx="455" cy="276" r="15"></circle>
+      <ellipse cx="447.504" cy="332.94" rx="15" ry="15"
+               transform="matrix(.264 -.964 .964 .264 8.088 676.485)"></ellipse>
+      <path
+        d="m433.026 373.01c-7.175-4.142-16.348-1.684-20.49 5.49s-1.684 16.348 5.49 20.49 16.348 1.684 20.49-5.49 1.684-16.348-5.49-20.49z"></path>
+      <path
+        d="m379.957 420.957c-5.858 5.858-5.858 15.355 0 21.213s15.355 5.858 21.213 0 5.858-15.355 0-21.213-15.355-5.858-21.213 0z"></path>
+      <ellipse cx="345" cy="466.526" rx="15" ry="15" transform="matrix(1 -.003 .003 1 -1.438 1.067)"></ellipse>
+      <path
+        d="m288.058 474.015c-8.002 2.144-12.751 10.369-10.607 18.371s10.369 12.751 18.371 10.607 12.751-10.369 10.607-18.371-10.369-12.751-18.371-10.607z"></path>
+    </g>
+  </svg>
+</ng-template>
+
+<ng-template #icon3>
+  <svg id="fi_2546743" enable-background="new 0 0 512.449 512.449" height="512" viewBox="0 0 512.449 512.449"
+       width="512" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <path
+        d="m152.083 286.805c7.109-8.155 1.318-20.888-9.501-20.888h-32.392c-.211-3.205-.329-6.435-.329-9.692 0-80.706 65.658-146.364 146.363-146.364 38.784 0 74.087 15.168 100.304 39.877l45.676-53.435c-39.984-36.577-91.44-56.612-145.98-56.612-57.838 0-112.214 22.524-153.112 63.421-40.897 40.898-63.421 95.274-63.421 153.112 0 3.243.081 6.473.222 9.692h-27.284c-10.819 0-16.611 12.733-9.501 20.888l61.549 70.6 12.928 14.829 46.416-53.242z"></path>
+      <path
+        d="m509.321 245.614-45.907-52.658-28.57-32.771-40.791 46.789-33.686 38.64c-7.109 8.155-1.318 20.888 9.501 20.888h32.354c-5.293 75.928-68.748 136.086-145.997 136.086-33.721 0-64.811-11.469-89.586-30.703l-45.679 53.439c38.267 30.731 85.479 47.434 135.266 47.434 57.838 0 112.214-22.523 153.112-63.421 38.466-38.466 60.672-88.856 63.177-142.834h27.306c10.818-.001 16.609-12.734 9.5-20.889z"></path>
+    </g>
+  </svg>
+</ng-template>
