@@ -40,6 +40,8 @@ export class App implements OnInit {
       html: `
         <p>
           Our mission is to make robotics accessible and impactful, focusing on the areas that matter most to Australian businesses and people:
+        </p>
+        <p>
           <ul>
             <li><strong>Mining & Resources:</strong> safer operations, automated processes, more efficient exploration.</li>
             <li><strong>Disaster Prevention & Emergency Response:</strong> strengthening resilience, protecting communities, and supporting first responders.</li>

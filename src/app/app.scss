@@ -47,11 +47,18 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 800;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .app__brand-subtitle {
+  width: 100%;
   color: var(--color-text-muted);
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  text-align: justify;
 }
 
 .app__content {
@@ -64,8 +71,8 @@
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   overflow-x: hidden;
-  background: radial-gradient(50% 100% at -10% 50%, color-mix(in srgb, #00ff7926 40%, transparent) 0%, transparent 40%),
-              radial-gradient(50% 100% at -10% 50%, color-mix(in srgb, #25c0f480 20%, transparent) 0%, transparent 40%);
+  background: radial-gradient(50% 100% at -10% 10%, color-mix(in srgb, #00ff7926 40%, transparent) 0%, transparent 40%),
+              radial-gradient(50% 100% at -10% 10%, color-mix(in srgb, #25c0f480 20%, transparent) 0%, transparent 40%);
   transition: 0.3s ease-in-out;
 }
 
@@ -82,8 +89,9 @@
   padding: 56px clamp(18px, 4vw, 48px);
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
+  position: relative;
   gap: 18px;
   scroll-snap-align: start;
   opacity: 0;
@@ -93,17 +101,23 @@
 
 .sections__title {
   font-size: var(--font-size-title);
+  width: 100%;
 }
 
 .sections__html {
   line-height: 2;
+  min-width: 400px;
   width: 60%;
+  max-width: 960px;
+  font-size: 24px;
+  text-align: left;
+  color: var(--color-text-muted);
 }
 
 .sections__subtitle {
   color: var(--color-accent);
   font-size: var(--font-size-subtitle);
-  margin-bottom: -12px;
+  width: 100%;
 }
 
 .sections__item p, .sections__item li {
@@ -219,6 +233,14 @@ app-bg-map {
     border-right: none;
     border-bottom: 1px solid var(--color-border);
   }
+
+  .app__brand-title {
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .app__brand__contacts, .app__brand-subtitle {
     display: none;
   }
@@ -228,12 +250,16 @@ app-bg-map {
   }
 
   .sections__html {
-    width: unset;
+    line-height: 1.6;
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
   }
 
   .sections__item {
     padding: 20px clamp(30px, 4vw, 48px);
-    justify-content: flex-start;
   }
 
   .sections__nav {
