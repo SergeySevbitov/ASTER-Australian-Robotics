@@ -5,9 +5,9 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM dockerhub-proxy.itcapital.io/nginx:1.23.3 AS nginx
+FROM nginx:1.23.3 AS nginx
 
-COPY .ci/default.conf /etc/nginx/conf.d/
+COPY default.conf /etc/nginx/conf.d/
 
 RUN rm -rf /usr/share/nginx/html/*
 
