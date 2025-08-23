@@ -1,4 +1,4 @@
-FROM node:24-alpine AS builder
+FROM node:24-alpine AS angular_app
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -12,6 +12,6 @@ COPY .ci/default.conf /etc/nginx/conf.d/
 RUN rm -rf /usr/share/nginx/html/*
 
 COPY --from=angular_app /app/dist/apps/aster-landing/*  /usr/share/nginx/html/
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
