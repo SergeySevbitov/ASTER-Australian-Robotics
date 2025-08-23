@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  aster-landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.aster-landing.rule=Host(`your-domain.com`)"
+      - "traefik.http.routers.aster-landing.entrypoints=web"
+      - "traefik.http.routers.aster-landing.tls.certresolver=letsencrypt"

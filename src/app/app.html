@@ -1,0 +1,50 @@
+<!--<div class="bg">-->
+<!--  <img src="./background.png" alt="bg"/>-->
+<!--</div>-->
+<div class="app">
+  <aside class="app__brand">
+    <div>
+      <div class="app__brand-title">ASTER Australian Robotics</div>
+      <div class="app__brand-subtitle">Innovating for Australia's future</div>
+    </div>
+    <div class="app__brand__contacts">
+      <app-button href="mailto:interested@asterrobotics.com.au">Contact us</app-button>
+      <p>
+        &copy; 2025 Aster Robotics - All rights reserved.
+      </p>
+    </div>
+  </aside>
+
+  <section class="app__content">
+    <app-bg-map [ngClass]="['pos-' + selectedSectionId()]"/>
+    <div class="sections__list" [class.sections__list--sliding]="isSliding()" #slides>
+      @for (section of sections(); track section.id) {
+        <article class="sections__item" [class.is-visible]="visibleMap[section.id]" [attr.id]="'slide-' + section.id">
+          <div class="sections__header">
+            <h2 class="sections__subtitle" [innerHTML]="section.subtitle"></h2>
+            <h1 class="sections__title" [innerHTML]="section.title"></h1>
+          </div>
+          <div class="sections__html" [innerHTML]="section.html"></div>
+        </article>
+      }
+
+<!--      <div class="app__footer sections__item">-->
+<!--        <p>-->
+<!--          &copy; 2025 Aster Robotics - All rights reserved.-->
+<!--        </p>-->
+<!--      </div>-->
+    </div>
+    <nav class="sections__nav">
+      <div class="sections__nav__arrow" aria-label="Previous" (click)="prev()">
+        <img ngSrc="play.svg" alt="next" height="16" width="16" style="transform: rotate(-90deg);">
+      </div>
+      @for (section of sections(); let i = $index; track section.id) {
+        <div class="sections__dot" [class.sections__dot--active]="currentIndex() === i" (click)="goTo(i)"></div>
+      }
+      <div class="sections__nav__arrow" aria-label="Next" (click)="next()">
+        <img ngSrc="play.svg" alt="next" height="16" width="16" style="transform: rotate(90deg);">
+      </div>
+    </nav>
+    <app-button class="mobile-cta" href="mailto:interested@asterrobotics.com.au">Contact us</app-button>
+  </section>
+</div>
