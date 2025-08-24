@@ -259,6 +259,7 @@ app-bg-map {
   z-index: 200;
   width: calc(100% - 40px);
   max-width: 400px;
+  background: var(--color-bg);
 }
 
 .app__brand__list {
@@ -447,6 +448,7 @@ app-bg-map {
 
     p {
       font-size: 12px;
+      line-height: 1.2;
     }
   }
 
