@@ -385,6 +385,13 @@ app-bg-map {
     align-items: center;
   }
 
+  .app__brand-title {
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .app__brand__contacts, .app__brand-subtitle {
     display: none;
   }
@@ -394,8 +401,8 @@ app-bg-map {
   }
 
   .sections__html {
-    line-height: 1.6;
-    font-size: 16px;
+    line-height: 1.2;
+    font-size: 14px;
     text-align: left;
     width: 100%;
     max-width: unset;
@@ -404,6 +411,7 @@ app-bg-map {
 
   .sections__item {
     padding: 20px clamp(30px, 4vw, 48px);
+    gap: 4px;
   }
 
   .sections__nav {
