@@ -14,9 +14,6 @@
   /* typography */
   --font-sans: 'Raleway', 'Nunito', 'Cabin', 'Roboto', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-  --font-size-title: clamp(28px, 4.5vw, 56px);
-  --font-size-subtitle: clamp(14px, 2.5vw, 28px);
-  --font-size-body: 16px;
   --line-height: 1.6;
 
   /* layout */
@@ -45,7 +42,7 @@ body {
   margin: 0;
   color: var(--color-text);
   font-family: var(--font-sans), sans-serif;
-  font-size: var(--font-size-body);
+  font-size: 16px;
   line-height: var(--line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
